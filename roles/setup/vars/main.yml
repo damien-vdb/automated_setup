@@ -1,0 +1,5 @@
+---
+# vars file for zsh
+binaries: /home/{{ ansible_user }}/bin
+apps: /home/{{ ansible_user }}/Apps
+workspace: /home/{{ ansible_user }}/workspace

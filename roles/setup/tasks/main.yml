@@ -1,0 +1,20 @@
+---
+- name: Update apt
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: Install JDK
+  become: yes
+  include_role:
+    name: sansible.java
+  vars:
+    java:
+      vendor: oracle
+      version: 8
+      set_as_default: yes
+
+- include: layout.yml
+- include: utilities.yml
+- include: zsh.yml
+

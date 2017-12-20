@@ -1,0 +1,41 @@
+---
+- name: Install zsh
+  become: yes
+  apt:
+    name: zsh
+    state: present
+  register: zsh_install
+
+- name: Install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+- name: Setup zsh configuration
+  copy:
+    src: files/{{ item }}
+    dest: /home/{{ ansible_user }}/{{ item }}
+    remote_src: false
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0600
+  with_items:
+  - .zshrc
+  - .zprofile
+
+- name: Change shells
+  become: yes
+  user:
+    name: "{{ item }}"
+    shell: /usr/bin/zsh
+  with_items:
+  - "{{ ansible_user }}"
+  - "root"
+
+- name: Clear bash files
+  file:
+    state: absent
+    path: /home/{{ ansible_user }}/{{ item }}
+  with_items:
+  - .bashrc
+  - .bash_history
+  - .bash_logout
+  - .profile

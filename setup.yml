@@ -1,0 +1,4 @@
+- name: Setup environment
+  hosts: all
+  roles:
+  - setup

@@ -1,0 +1,23 @@
+---
+- name: Install utilities
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+  - curl
+  - git
+  - ranger
+  - htop
+  - lnav
+  - vim-gtk
+  - tree
+  - maven
+
+- name: Install direnv
+  get_url:
+    url: https://github.com/direnv/direnv/releases/download/v2.14.0/direnv.linux-amd64
+    dest: "{{ binaries }}/direnv"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0750
