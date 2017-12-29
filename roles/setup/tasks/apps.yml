@@ -1,0 +1,8 @@
+---
+- name: How to download IntelliJ Community
+  debug:
+    msg: "cd {{ downloads }} &&
+    wget https://download.jetbrains.com/idea/ideaIC-{{ intellij_version }}-no-jdk.tar.gz &&
+    cd {{ apps }} &&
+    tar -xf /home/{{ ansible_user }}/Downloads/ideaIC-{{ intellij_version }}-no-jdk.tar.gz"
+

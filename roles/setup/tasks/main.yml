@@ -26,3 +26,4 @@
   tags:
   - shell
 
+- include: apps.yml
