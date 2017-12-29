@@ -13,8 +13,16 @@
       vendor: oracle
       version: 8
       set_as_default: yes
+  tags:
+  - java
 
 - include: layout.yml
+
 - include: utilities.yml
+  tags:
+  - utilities
+
 - include: zsh.yml
+  tags:
+  - shell
 

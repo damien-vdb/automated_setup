@@ -21,3 +21,26 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: 0750
+
+- block:
+  - name: Install todo.txt
+    unarchive:
+      remote_src: yes
+      src: https://github.com/todotxt/todo.txt-cli/releases/download/v2.10.0/todo.txt_cli-2.10.tar.gz
+      dest: "{{ apps }}"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      creates: "/{{ apps }}/todo.txt_cli-2.10"
+
+  - name: Link todo
+    file:
+      state: link
+      src: "{{ apps }}/todo.txt_cli-2.10"
+      dest: /home/{{ ansible_user }}/.todo
+
+  - name: Set todo.sh as executable
+    file:
+      path: "/home/{{ ansible_user }}/.todo/todo.sh"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: 0750

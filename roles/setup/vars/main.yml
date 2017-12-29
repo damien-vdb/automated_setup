@@ -2,4 +2,5 @@
 # vars file for zsh
 binaries: /home/{{ ansible_user }}/bin
 apps: /home/{{ ansible_user }}/Apps
+formations: /home/{{ ansible_user }}/Formations
 workspace: /home/{{ ansible_user }}/workspace
