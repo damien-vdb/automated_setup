@@ -55,6 +55,7 @@ plugins=(git mvn)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.aliases
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
